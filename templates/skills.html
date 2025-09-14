@@ -3,11 +3,20 @@
 {% block content %}
 <h1>Welcome to my portfolio!</h1>
 <h1>Skills.</h1>
-<ul>
-  <li>HTML, CSS, Bootstrap</li>
-  <li>JavaScript (basics)</li>
-  <li>Python - Flask, Databases structure, Logic</li>
-  <li>Git & GitHub</li>
-  <li>Terminal support, VS Code</li>
-</ul>
+
+{% if skills %}
+    <ul>
+        {% for skill in skills %}
+        <li>
+            {{ skill.name }}
+            {% if skill.category %}
+                <em>({{ skill.category }})</em>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No skills found. Please check database connection.</p>
+{% endif %}
+
 {% endblock %}
