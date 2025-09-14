@@ -1,169 +1,101 @@
+/* Basic CSS for Portfolio */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
 }
 
-
-
-
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     background-color: #333;
     color: white;
-    padding: 15px 0;
+    padding: 1rem 0;
     text-align: center;
-    z-index: 100;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-right: 15px;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    
-}
-
-
-
-main {
-    max-width: 800px;
-    margin-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-main h1 {
-    text-align: center;
-}
-
-main p {
-    text-align: center;
-    text-align: justify;
-}
-
-
-
-.section-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center; 
-}
-
-
-
-
-.section-content ul {
-  text-align: center;
-  list-style: none;
-  padding: 0;
-}
-.section-content li {
-  margin: 5px 0;
-}
-
-
-
-
-
-
-form {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;
-}
-
-form input,
-form textarea {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-form button {
-    padding: 0.75rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
+    margin: 0 15px;
+    padding: 8px 12px;
+    border-radius: 4px;
     transition: background-color 0.3s;
 }
 
-form button:hover {
+nav a:hover {
     background-color: #555;
 }
 
-form p {
-    margin-top: 1rem;
-    font-weight: bold;
-    color: green;
-    text-align: center;
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
 }
 
+.section-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
+h1 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+}
 
 footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-  margin-top: 40px;
-  border-top: 2px solid #555;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
 }
 
 footer a {
-  color: #88c0d0;
-  text-decoration: none;
+    color: #007bff;
+    text-decoration: none;
 }
 
-footer a:hover {
-  text-decoration: underline;
+/* Contact Form Styles */
+form {
+    max-width: 600px;
 }
 
-
-
-
-@media (max-width: 768px) {
-  .section-content {
+input, textarea {
+    width: 100%;
     padding: 10px;
-    max-width: 100%;
-  }
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
 
-  header, footer {
-    padding: 10px;
-    font-size: 14px;
-  }
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  main h1 {
-    font-size: 22px;
-  }
-} 
+button:hover {
+    background-color: #0056b3;
+}
