@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Configuration for PostgreSQL
 app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:TWOJE_HASLO@localhost:5432/portfolio_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tyju@localhost:5432/portfolio_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
@@ -140,4 +140,4 @@ if __name__ == '__main__':
         init_db()
     app.run(debug=True)
 
-# Portfolio Flask App created by Sebastian Kajda (UCD Assignment - August 2025)
+# Portfolio Flask and Database App created by Sebastian Kajda (UCD Assignment - September 2025)
