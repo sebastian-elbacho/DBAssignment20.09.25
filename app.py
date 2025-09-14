@@ -6,9 +6,9 @@ from datetime import datetime
 # create an instance of the Flask application
 app = Flask(__name__)
 
-# Configuration for SQLite (temporary solution)
+# Configuration for PostgreSQL
 app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:TWOJE_HASLO@localhost:5432/portfolio_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
