@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/portfolio_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/portfolio_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:TWOJE_HASLO@localhost:5432/portfolio_db'
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
