@@ -14,7 +14,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 
-# Models
+# ------------------------
+# MODELS
+# ------------------------
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -43,29 +45,28 @@ class ContactMessage(db.Model):
     def __repr__(self):
         return f'<ContactMessage from {self.name}>'
 
-# Routes
+
+# ------------------------
+# ROUTES
+# ------------------------
 @app.route('/')
 def home():
     return render_template('home.html')
 
-# Route to the projects section - now using database
 @app.route('/projects')
 def projects():
     projects = Project.query.all()
     return render_template('projects.html', projects=projects)
 
-# route to the skills section - now using database
 @app.route('/skills')
 def skills():
     skills = Skill.query.all()
     return render_template('skills.html', skills=skills)
 
-# route to the about section
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-# route to the contact form (GET – shows the form, POST – receives data).
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -73,7 +74,6 @@ def contact():
         email = request.form['email']
         message_text = request.form['message']
         
-        # Save to database instead of just printing
         new_message = ContactMessage(name=name, email=email, message=message_text)
         try:
             db.session.add(new_message)
@@ -85,17 +85,58 @@ def contact():
             print(f"Błąd przy zapisie: {e}")
             return render_template('contact.html', submitted=False, error=True)
     
-    # For the GET method we return an empty form
     return render_template('contact.html', submitted=False)
 
-# Function to create tables and add sample data
+
+# ------------------------
+# CRUD dla Project
+# ------------------------
+@app.route('/projects/new', methods=['GET', 'POST'])
+def new_project():
+    """Create - dodawanie nowego projektu"""
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        technologies = request.form['technologies']
+
+        new_project = Project(title=title, description=description, technologies=technologies)
+        db.session.add(new_project)
+        db.session.commit()
+        return redirect(url_for('projects'))
+
+    return render_template('new_project.html')
+
+@app.route('/projects/edit/<int:id>', methods=['GET', 'POST'])
+def edit_project(id):
+    """Update - edycja projektu"""
+    project = Project.query.get_or_404(id)
+
+    if request.method == 'POST':
+        project.title = request.form['title']
+        project.description = request.form['description']
+        project.technologies = request.form['technologies']
+        db.session.commit()
+        return redirect(url_for('projects'))
+
+    return render_template('edit_project.html', project=project)
+
+@app.route('/projects/delete/<int:id>', methods=['POST'])
+def delete_project(id):
+    """Delete - usuwanie projektu"""
+    project = Project.query.get_or_404(id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for('projects'))
+
+
+# ------------------------
+# INIT DB
+# ------------------------
 def init_db():
     """Initialize database with sample data"""
     db.create_all()
     
-    # Check if data already exists
     if Project.query.first() is None:
-        # Add sample projects
         projects_data = [
             {
                 'title': 'Portfolio web',
@@ -118,7 +159,6 @@ def init_db():
             project = Project(**project_data)
             db.session.add(project)
         
-        # Add sample skills
         skills_data = [
             {'name': 'HTML, CSS, Bootstrap', 'category': 'Frontend'},
             {'name': 'JavaScript (basics)', 'category': 'Frontend'},
@@ -134,10 +174,14 @@ def init_db():
         db.session.commit()
         print("Database initialized with sample data!")
 
-# We only run the application if the file is run directly
+
+# ------------------------
+# RUN APP
+# ------------------------
 if __name__ == '__main__':
     with app.app_context():
         init_db()
     app.run(debug=True)
+
 
 # Portfolio Flask and Database App created by Sebastian Kajda (UCD Assignment - September 2025)
