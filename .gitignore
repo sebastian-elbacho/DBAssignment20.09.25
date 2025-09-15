@@ -1,0 +1,13 @@
+# Ignoruj środowisko wirtualne
+venv/
+
+# Pliki systemowe
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pliki konfiguracyjne IDE
+.vscode/
+.idea/
