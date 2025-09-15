@@ -49,3 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+// Hamburger
+
+
+const menu = document.querySelector('.hamburger'); 
+const nav = document.getElementById('nav-menu');
+
+menu.addEventListener('click', () => { 
+	menu.classList.toggle('hamburger--active'); // animacja ikony
+	nav.classList.toggle('nav--open');          // widoczność menu
+});

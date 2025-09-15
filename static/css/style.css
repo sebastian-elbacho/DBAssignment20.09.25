@@ -7,17 +7,164 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
+/* header {
     background-color: #333;
     color: white;
     padding: 1rem 0;
     text-align: center;
+} */
+
+header {
+  position: relative; /* pozwala ustawiać hamburgera absolutnie wewnątrz */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-nav a {
+
+/* Hamburger menu */
+
+
+/* .hamburger {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+} */
+
+
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  z-index: 999;
+  cursor: pointer;
+}
+
+  
+/* .hamburger:focus > .hamburger__container {
+    box-shadow: 0 0 2px 2px #51a7e8;
+} */
+
+.hamburger:focus, 
+.hamburger__container:focus {
+    outline: none;
+}
+
+.hamburger__container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 35px;
+    height: 30px;
+}
+
+
+/* srodkowa kreska */
+.hamburger__bars {
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: #000;
+    transition: transform 220ms ease-in-out;
+}
+
+
+/* gorna i dolna kreska */
+.hamburger__bars::before, 
+.hamburger__bars::after {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: #000;
+    content: '';
+}
+
+
+/* pozycja gornaj kreski */
+.hamburger__bars::before {
+    top: -12px;
+    transition: top 100ms 250ms ease-in, transform 220ms ease-in-out;
+}
+
+
+/* pozycja dolnej kreski  */
+
+.hamburger__bars::after {
+    bottom: -12px;
+    transition: bottom 100ms 250ms ease-in, transform 220ms ease-in-out;
+}
+
+
+/* === Stan aktywny (zmina w "X" === */
+.hamburger--active .hamburger__bars {             /* Gdy przycisk ma klasę --active */
+  transform: rotate(225deg);                      /* Obrót środkowej kreski */
+  transition: transform 220ms 120ms ease-in-out; /* Z lekkim opóźnieniem */
+}
+
+.hamburger--active .hamburger__bars::before {    /* gorna kreska podczas aktywacji */
+    top: 0;
+    transition: top 100ms ease-out;      /* szybkie wyrownanie */
+
+
+}
+
+
+.hamburger--active .hamburger__bars::after {
+   bottom: 0;
+   transform: rotate(-90deg);
+   transition: bottom 100ms ease-out, transform 220ms 120ms;
+}
+
+/* Hamburger Media queries */
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+  }
+
+  .nav.nav--open {
+    display: flex;
+  }
+
+  .nav a {
     color: white;
+    padding: 1rem;
+    border-bottom: 1px solid #444;
+    text-align: center;
+  }
+}
+
+
+
+nav a {
+    color: black;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 1rem;
     padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -96,6 +243,6 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+/* button:hover {
     background-color: #0056b3;
-}
+} */
