@@ -6,8 +6,9 @@ venv/
 
 # Python cache
 __pycache__/
-*.pyc
+*.pyc 
 
 # Pliki konfiguracyjne IDE
 .vscode/
 .idea/
+ 
