@@ -102,6 +102,7 @@ def new_project():
         new_project = Project(title=title, description=description, technologies=technologies)
         db.session.add(new_project)
         db.session.commit()
+        flash(f"Projekt '{title}' został dodany ✅", "success")
         return redirect(url_for('projects'))
 
     return render_template('new_project.html')
