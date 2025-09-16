@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Nowy Projekt{% endblock %}
+
+{% block content %}
+<h1>Add new project.</h1>
+
+<form action="{{ url_for('new_project') }}" method="POST">
+    <label for="title">Tytuł projektu:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="description">Opis:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <label for="technologies">Technologie (oddzielone przecinkami):</label><br>
+    <input type="text" id="technologies" name="technologies"><br><br>
+
+    <button type="submit">Add project.</button>
+</form>
+
+<br>
+<a href="{{ url_for('projects') }}">Back to projects.</a>
+{% endblock %}
