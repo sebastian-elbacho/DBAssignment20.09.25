@@ -6,7 +6,7 @@
 <h1>My Projects.</h1>
 
 <!-- 🟢 Create -->
-<p><a href="{{ url_for('new_project') }}">➕ Dodaj nowy projekt</a></p>
+<p><a href="{{ url_for('new_project') }}"><span class="hand" style='font-size:24px;'>&#8594; </span>Click here to add new project.</a></p>
 
 {% if projects %}
     <ul>
@@ -22,7 +22,7 @@
 
             <!-- 🔴 Delete -->
             <form action="{{ url_for('delete_project', id=project.id) }}" method="POST" style="display:inline;">
-                <button class="remove" type="submit" onclick="return confirm('Na pewno usunąć {{ project.title }}?');">Remove</button>
+                <button class="remove" type="submit" onclick="return confirm('Are You sure ? {{ project.title }}?');">Remove</button>
             </form>
         </li>
         {% endfor %}
