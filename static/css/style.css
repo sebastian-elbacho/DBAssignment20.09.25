@@ -111,6 +111,7 @@ header {
     padding: 1rem;
     /* border-bottom: 1px solid #444;  usuń pasek */
     text-align: center;
+    text-decoration: none;
 }
 
 
@@ -119,6 +120,31 @@ header {
     color: white;
     transition: 0.2s;
 }
+
+/* ====================
+PROJECTS CRUD
+====================== */
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.remove {
+  background-color: transparent;
+  color: black;
+
+}
+
+.remove:hover {
+  color: red;
+  transition: 0.2s;
+}
+
+
+
+
+
 
 /* ======================
    MOBILE MENU

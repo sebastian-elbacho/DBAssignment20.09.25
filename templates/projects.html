@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Projects{% endblock %}
+
 {% block content %}
 <h1>Welcome to my portfolio!</h1>
 <h1>My Projects.</h1>
+
+<!-- 🟢 Create -->
+<p><a href="{{ url_for('new_project') }}">➕ Dodaj nowy projekt</a></p>
 
 {% if projects %}
     <ul>
@@ -12,6 +16,14 @@
             {% if project.technologies %}
                 <br><em>Technologies: {{ project.technologies }}</em>
             {% endif %}
+
+            <!-- 🟡 Update -->
+            <br><a href="{{ url_for('edit_project', id=project.id) }}">Edit</a>
+
+            <!-- 🔴 Delete -->
+            <form action="{{ url_for('delete_project', id=project.id) }}" method="POST" style="display:inline;">
+                <button class="remove" type="submit" onclick="return confirm('Na pewno usunąć {{ project.title }}?');">Remove</button>
+            </form>
         </li>
         {% endfor %}
     </ul>
