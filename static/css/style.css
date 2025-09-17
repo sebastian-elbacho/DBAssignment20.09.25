@@ -26,7 +26,7 @@ header {
 
 .hamburger {
   display: none; /* tylko na mobile */
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
   background: none;
@@ -102,8 +102,8 @@ header {
 .nav {
     flex-grow: 1;
     justify-content: flex-end;
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .nav a {
@@ -160,7 +160,7 @@ a {
     display: none; /* ukryte domyślnie */
     flex-direction: column;
     position: fixed;
-    top: 70px;      /* menu zaczyna się pod headerem */
+    top: 90px;      /* menu zaczyna się pod headerem */
     left: 0;
     width: 100%;
     background-color: #222;
@@ -307,3 +307,4 @@ rETURN PROMPT STYLES
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
+
