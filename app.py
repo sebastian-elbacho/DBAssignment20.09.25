@@ -119,6 +119,8 @@ def edit_project(id):
         project.description = request.form['description']
         project.technologies = request.form['technologies']
         db.session.commit()
+
+        
         return redirect(url_for('projects'))
 
     return render_template('edit_project.html', project=project)
@@ -186,7 +188,7 @@ def init_db():
 if __name__ == '__main__':
     with app.app_context():
         init_db()
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
 
 
 # Portfolio Flask and Database App created by Sebastian Kajda (UCD Assignment - September 2025)
