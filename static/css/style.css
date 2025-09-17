@@ -112,6 +112,7 @@ header {
     /* border-bottom: 1px solid #444;  usuń pasek */
     text-align: center;
     text-decoration: none;
+    
 }
 
 
@@ -154,6 +155,7 @@ a {
 @media (max-width: 768px) {
   .hamburger {
     display: block; /* pokaż na mobile */
+    
   }
 
   .nav {
@@ -164,11 +166,14 @@ a {
     left: 0;
     width: 100%;
     background-color: #222;
-    z-index: 998;
+    z-index: 100;
+    
   }
 
   .nav.nav--open {
     display: flex;
+    transition: .3s ease-in-out;
+    
   }
 
   .nav a {
@@ -176,6 +181,7 @@ a {
     padding: 1rem;
     border-bottom: 1px solid #444;
     text-align: center;
+    
   }
 
   main {

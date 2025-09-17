@@ -107,6 +107,8 @@ def new_project():
 
     return render_template('new_project.html')
 
+
+
 @app.route('/projects/edit/<int:id>', methods=['GET', 'POST'])
 def edit_project(id):
     """Update - edycja projektu"""
@@ -127,6 +129,8 @@ def delete_project(id):
     project = Project.query.get_or_404(id)
     db.session.delete(project)
     db.session.commit()
+
+    flash(f"Project '{project.title}' removed", "error")
     return redirect(url_for('projects'))
 
 
