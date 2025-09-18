@@ -1,22 +1,22 @@
-// Portfolio JavaScript
+
 console.log('Portfolio loaded successfully!');
 
-// Wait for DOM to be ready
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM ready!');
     
-    // Add smooth scrolling to navigation links
-    const navLinks = document.querySelectorAll('nav a');
+   
+ const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Add smooth transition effect
+            
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
             }, 150);
         });
         
-        // Add hover effects
+        
         link.addEventListener('mouseenter', function() {
             this.style.backgroundColor = '#555';
         });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add form validation if contact form exists
+    
     const contactForm = document.querySelector('form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -51,13 +51,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Hamburger
-
-
+// Hamburger menu
 const menu = document.querySelector('.hamburger'); 
 const nav = document.getElementById('nav-menu');
 
-menu.addEventListener('click', () => { 
-	menu.classList.toggle('hamburger--active'); // animacja ikony
-	nav.classList.toggle('nav--open');          // widoczność menu
-});
+if (menu && nav) {
+    menu.addEventListener('click', () => { 
+        menu.classList.toggle('hamburger--active'); 
+        nav.classList.toggle('nav--open'); // 🔑 otwieramy / zamykamy menu
+    });
+}
+
+
+
+
+
