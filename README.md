@@ -5,26 +5,26 @@ The app showcases my portfolio, with CRUD features for projects.
 
 Features:
 Home
-Project List<br>
-Adding Projects
-Editing Projects
-Deleting Projects
-Skills List
-About Me
-Contact Form – messages saved in the database
-Flash messages informing about success, errors, and updates
-Hemburger Menu for small devices
+Project List <br>
+Adding Projects <br>
+Editing Projects <br>
+Deleting Projects <br>
+Skills List <br>
+About Me <br>
+Contact Form – messages saved in the database <br>
+Flash messages informing about success, errors, and updates <br>
+Hemburger Menu for small devices <br>
 
 
 
 
-Technologies:
-Python 3
-JavaScript
-Flask
-SQLAlchemy
-PostgreSQL
-HTML, CSS
-GitHub
+Technologies: <br>
+Python 3 <br>
+JavaScript <br>
+Flask <br>
+SQLAlchemy <br>
+PostgreSQL <br>
+HTML, CSS <br>
+GitHub <br>
 
 
