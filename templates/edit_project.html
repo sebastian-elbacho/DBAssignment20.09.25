@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Edytuj Projekt{% endblock %}
+
+{% block content %}
+<h1>✏️ Edytuj projekt</h1>
+
+<form action="{{ url_for('edit_project', id=project.id) }}" method="POST">
+    <label for="title">Tytuł projektu:</label><br>
+    <input type="text" id="title" name="title" value="{{ project.title }}" required><br><br>
+
+    <label for="description">Opis:</label><br>
+    <textarea id="description" name="description" required>{{ project.description }}</textarea><br><br>
+
+    <label for="technologies">Technologie:</label><br>
+    <input type="text" id="technologies" name="technologies" value="{{ project.technologies }}"><br><br>
+
+    <button type="submit">💾 Zapisz zmiany</button>
+</form>
+
+<br>
+<a href="{{ url_for('projects') }}">⬅️ Powrót do listy</a>
+{% endblock %}
