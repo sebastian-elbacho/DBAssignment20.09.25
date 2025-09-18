@@ -17,12 +17,10 @@ header {
   
 }
 
-/* ======================
-   HAMBURGER
-====================== */
+
 
 .hamburger {
-  display: none; /* tylko na mobile */
+  display: none; 
   position: fixed;
   top: 2rem;
   right: 1rem;
@@ -45,7 +43,7 @@ header {
   height: 30px;
 }
 
-/* kreski */
+
 .hamburger__bars {
   position: absolute;
   width: 35px;
@@ -74,7 +72,7 @@ header {
   transition: bottom 100ms 250ms ease-in, transform 220ms ease-in-out;
 }
 
-/* aktywny stan (X) */
+
 .hamburger--active .hamburger__bars {
   transform: rotate(225deg);
   transition: transform 220ms 120ms ease-in-out;
@@ -90,14 +88,6 @@ header {
   transform: rotate(-90deg);
   transition: bottom 100ms ease-out, transform 220ms 120ms;
 }
-
-
-
-
-
-/* ======================
-   NAVIGATION DESKTOP
-====================== */
 
 
 .nav {
@@ -122,9 +112,7 @@ header {
   transition: 0.2s;
 }
 
-/* ====================
-PROJECTS CRUD
-====================== */
+
 
 a {
   text-decoration: none;
@@ -143,11 +131,6 @@ a {
 }
 
 
-
-
-/* ======================
-   MAIN CONTENT
-====================== */
 
 main {
   max-width: 1200px;
@@ -181,20 +164,16 @@ li {
   border-radius: 4px;
 }
 
-/* Kontener dla header + main */
+
 .container {
-  max-width: 1200px;   /* taka sama jak main */
-  margin: 0 auto;      /* wyśrodkowanie */
-  padding: 0 20px;     /* odstęp od krawędzi */
+  max-width: 1200px;   
+  margin: 0 auto;      
+  padding: 0 20px;    
   /* display: flex; */
   align-items: center;
   justify-content: space-between;
 }
 
-
-/* ======================
-   FOOTER
-====================== */
 
 footer {
   background-color: #333;
@@ -209,9 +188,6 @@ footer a {
   text-decoration: none;
 }
 
-/* ======================
-   FORMS
-====================== */
 
 form {
   max-width: 600px;
@@ -236,10 +212,6 @@ button {
   font-size: 16px;
 }
 
-/* =============
-rETURN PROMPT STYLES
-
-================*/
 
 .flash-messages {
   margin: 15px auto;
@@ -275,21 +247,19 @@ rETURN PROMPT STYLES
 }
 
 
-/* ======================
-   MOBILE MENU
-====================== */
+/* Hamburger, mobile menu */
 
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* pokaż na mobile */
+    display: block; 
     
   }
 
   .nav {
-    display: none; /* ukryte domyślnie */
+    display: none; 
     flex-direction: column;
     position: fixed;
-    top: 90px;      /* menu zaczyna się pod headerem */
+    top: 90px;      
     left: 0;
     width: 100%;
     background-color: #222;
@@ -313,7 +283,7 @@ rETURN PROMPT STYLES
   }
 
   main {
-    margin-top: 80px; /* żeby treść nie chowała się pod headerem */
+    margin-top: 80px; 
   }
 }
 
