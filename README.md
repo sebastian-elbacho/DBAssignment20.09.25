@@ -3,19 +3,17 @@ Portfolio App – Flask + PostgreSQL
 Project created as part of my final exam (UCD, September 2025).
 The app showcases my portfolio, with CRUD features for projects.
 
-Features:
-Home
-Project List <br>
-Adding Projects <br>
-Editing Projects <br>
-Deleting Projects <br>
-Skills List <br>
-About Me <br>
-Contact Form – messages saved in the database <br>
+Features: <br>
+Home (Home)<br>
+Project List (Projects)<br>
+Adding Projects (Create)<br>
+Editing Projects (Update)<br>
+Deleting Projects (Delete)<br>
+Skills List (Read)<br>
+About Me (About)<br>
+Contact Form (Contact) – messages saved in the database <br>
 Flash messages informing about success, errors, and updates <br>
-Hemburger Menu for small devices <br>
-
-
+Hemburger Menu for responsive navigate <br>
 
 
 Technologies: <br>
@@ -26,5 +24,34 @@ SQLAlchemy <br>
 PostgreSQL <br>
 HTML, CSS <br>
 GitHub <br>
+
+Local startup instructions: <br>
+1. Clone the repository: <br>
+bash <br>
+git clone https://github.com/sebastian-elbacho/DBAssignment20.09.25 <br>
+cd DBAssignment20.09.25 <br>
+
+2. Create a virtual environment: <br>
+python3 -m venv venv <br>
+source venv/bin/activate   # Mac/Linux <br>
+venv\Scripts\activate      # Windows <br>
+
+3. Install dependencies: <br>
+bash <br>
+pip install -r requirements.txt <br>
+
+3. Run the application: <br>
+bash <br>
+python3 app.py <br>
+
+Open in browser: <br>
+http://127.0.0.1:5000 <br>
+
+
+
+
+
+
+
 
 
