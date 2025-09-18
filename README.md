@@ -5,7 +5,7 @@ The app showcases my portfolio, with CRUD features for projects.
 
 Features:
 Home
-Project List
+Project List<br>
 Adding Projects
 Editing Projects
 Deleting Projects
