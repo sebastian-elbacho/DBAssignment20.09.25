@@ -293,12 +293,13 @@ rETURN PROMPT STYLES
 
 .flash-messages {
   margin: 15px auto;
-  max-width: 800px;
+  max-width: 900px;
+  padding: 0 15px;
 }
 
 .flash {
   padding: 12px 18px;
-  border-radius: 6px;
+  border-radius: 8px;
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
@@ -315,5 +316,11 @@ rETURN PROMPT STYLES
   color: #721c24;
   border: 1px solid #f5c6cb;
   
+}
+
+.flash.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
 }
 
