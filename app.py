@@ -119,6 +119,7 @@ def edit_project(id):
         project.description = request.form['description']
         project.technologies = request.form['technologies']
         db.session.commit()
+        flash(f"Projekt '{project.title}' updated", "info" )
 
         
         return redirect(url_for('projects'))
