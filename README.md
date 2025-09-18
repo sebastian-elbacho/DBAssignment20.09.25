@@ -26,21 +26,21 @@ HTML, CSS <br>
 GitHub <br>
 
 Local startup instructions: <br>
-1. Clone the repository: <br>
+Clone the repository: <br>
 bash <br>
 git clone https://github.com/sebastian-elbacho/DBAssignment20.09.25 <br>
 cd DBAssignment20.09.25 <br>
 
-2. Create a virtual environment: <br>
+Create a virtual environment: <br>
 python3 -m venv venv <br>
 source venv/bin/activate   # Mac/Linux <br>
 venv\Scripts\activate      # Windows <br>
 
-3. Install dependencies: <br>
+Install dependencies: <br>
 bash <br>
 pip install -r requirements.txt <br>
 
-3. Run the application: <br>
+Run the application: <br>
 bash <br>
 python3 app.py <br>
 
