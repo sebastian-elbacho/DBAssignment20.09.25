@@ -10,14 +10,14 @@
 <body>
     <header>
         <div class="container">   
-            <!-- Hamburger -->
+            
             <button class="hamburger" aria-label="Menu">
                 <span class="hamburger__container" tabindex="-1">
                     <span class="hamburger__bars"></span>
                 </span>
             </button>
 
-            <!-- Menu -->
+            
             <nav id="nav-menu" class="nav">
                 <a href="/">Home</a>
                 <a href="/projects">Projects</a>
@@ -28,7 +28,7 @@
         </div>
     </header>
 
-    <!-- Flash messages -->
+    
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <div class="flash-messages">
@@ -42,18 +42,18 @@
 
 
 
-    <main class="container">
-        <div class="section-content">  
-            {% block content %}{% endblock %}
-        </div>
-    </main>
+<main class="container">
+    <div class="section-content">  
+      {% block content %}{% endblock %}
+    </div>
+ </main>
 
     <footer>
         <p>&copy; 2025 Sebastian. All rights reserved.</p>
         <p>Contact: <a href="mailto:email@example.com">email@example.com</a></p>
     </footer>
 
-    <!-- SweetAlert2 (biblioteka) -->
+   
 
 <script src="https://unpkg.com/sweetalert2@11"></script>
 

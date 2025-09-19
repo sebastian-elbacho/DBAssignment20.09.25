@@ -58,7 +58,7 @@ const nav = document.getElementById('nav-menu');
 if (menu && nav) {
     menu.addEventListener('click', () => { 
         menu.classList.toggle('hamburger--active'); 
-        nav.classList.toggle('nav--open'); // 🔑 otwieramy / zamykamy menu
+        nav.classList.toggle('nav--open'); 
     });
 }
 
