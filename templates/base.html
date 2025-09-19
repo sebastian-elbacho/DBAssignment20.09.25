@@ -63,10 +63,10 @@
   {% if messages %}
     {% for category, message in messages %}
       <script>
-        console.log("Pokazuję flash:", "{{ message }}");
+        console.log("Shows flash:", "{{ message }}");
         Swal.fire({
           icon: '{{ "success" if category == "success" else "error" }}',
-          title: '{{ "Sukces!" if category == "success" else "Błąd" }}',
+          title: '{{ "Sukces!" if category == "success" else "Error" }}',
           text: '{{ message|safe }}',
           confirmButtonText: 'OK'
         });
