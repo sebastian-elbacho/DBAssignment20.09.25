@@ -40,23 +40,6 @@ Live demo here => https://dbassignment20-09-25.onrender.com <br>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Create a virtual environment: <br>
 python3 -m venv venv <br>
 source venv/bin/activate   # Mac/Linux <br>
@@ -72,6 +55,9 @@ python3 app.py <br>
 
 Open in browser: <br>
 http://127.0.0.1:5000 <br>
+
+
+Created by Sebastian Kajda, Assignement for UCD - September 2025
 
 
 
