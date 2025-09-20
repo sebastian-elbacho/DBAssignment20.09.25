@@ -31,6 +31,34 @@ bash <br>
 git clone https://github.com/sebastian-elbacho/DBAssignment20.09.25 <br>
 cd DBAssignment20.09.25 <br>
 
+
+Deployment on Render <br>
+
+This app is live and hosted on Render.com <br>
+
+Live demo here => https://dbassignment20-09-25.onrender.com <br>
+
+Variable <br>       |Example Value<br>
+DATABASE_URL <br>   |postgresql://user:pass@host/dbname<br>
+SECRET_KEY <br>     |super-secret-key<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Create a virtual environment: <br>
 python3 -m venv venv <br>
 source venv/bin/activate   # Mac/Linux <br>
