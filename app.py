@@ -183,6 +183,17 @@ def init_db():
 
 
 # ------------------------
+# AUTO-CREATE TABLES (Render free plan workaround)
+# ------------------------
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+
+
+
+
+# ------------------------
 # RUN APP
 # ------------------------
 if __name__ == '__main__':
