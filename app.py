@@ -7,8 +7,18 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Configuration for PostgreSQL
-app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tyju@localhost:5432/portfolio_db'
+# app.config['SECRET_KEY'] = 'your-secret-key-here'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tyju@localhost:5432/portfolio_db'
+import os
+
+database_url = os.getenv("DATABASE_URL")
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
@@ -186,19 +196,33 @@ def init_db():
 # ------------------------
 # AUTO-CREATE TABLES (Render workaround)
 # ------------------------
-# import os
+# 
+import os
 
-# @app.before_first_request
-# def create_tables():
-#     print(">>> Checking database URL:", os.getenv("DATABASE_URL"))
-#     try:
-#         db.create_all()
-#         print(">>> Tables created successfully!")
-#     except Exception as e:
-#         print(">>> Error creating tables:", e)
+def create_app():
+    app = Flask(__name__)
+    
+    # Wczytanie DATABASE_URL z Rendera
+    database_url = os.getenv("DATABASE_URL")
 
+    if not database_url:
+        raise RuntimeError("DATABASE_URL nie jest ustawiony!")
 
+    # Konwersja z postgres:// na postgresql:// (ważne!)
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
 
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    db.init_app(app)
+
+    # Tworzenie tabel (jeśli potrzeba)
+    with app.app_context():
+        db.create_all()
+        print(">>> Tabele zostały utworzone lub już istniały")
+
+    return app
 
 
 
