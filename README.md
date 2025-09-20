@@ -68,7 +68,7 @@ Open in browser: <br>
 http://127.0.0.1:5000 <br>
 
 
-Created by Sebastian Kajda, Assignement for UCD - September 2025
+
 
 
 
