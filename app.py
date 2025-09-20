@@ -36,7 +36,19 @@ def create_app():
    @app.route("/")
    def index():
         return render_template("index.html")
-        return app
+   
+   @app.route("/projects")
+   def projects_view():
+       items = Project.query.order_by(Project.created_at.desc()).all()
+       return render_template("projects.html", projects=items)
+
+   @app.route("/skills")
+   def skills_view():
+       items = Skill.query.order_by(Skill.name.asc()).all()
+       return render_template("skills.html", skills=items)
+
+   
+    
 
 # URUCHOMIENIE aplikacji (Render tego potrzebuje)
 app = create_app()
