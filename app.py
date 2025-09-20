@@ -200,6 +200,7 @@ def init_db():
 # 
 def create_app():
     app = Flask(__name__)
+
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
 
     database_url = os.getenv("DATABASE_URL")
@@ -214,12 +215,12 @@ def create_app():
 
     db.init_app(app)
 
-    # TU JEST MAGIA — UTWORZENIE TABEL
     with app.app_context():
         db.create_all()
-        print(">>> Tabele utworzone (lub już istniały)")
+        print(">>> Tabele zostały utworzone lub już istniały")
 
     return app
+
 
 
 
