@@ -1,57 +1,67 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-# DODAJEMY MODELE – to kluczowe!
-from models.project_model import Project
-from models.skill_model import Skill
-
-# Inicjalizacja bazy (SQLAlchemy)
+# --- SQLAlchemy init ---
 db = SQLAlchemy()
 
-# Funkcja tworząca aplikację
+# --- MODELE w tym samym pliku (brak circular import) ---
+class Project(db.Model):
+    __tablename__ = "project"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    technologies = db.Column(db.String(200))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Skill(db.Model):
+    __tablename__ = "skill"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(100), nullable=False)
+
+# --- Fabryka aplikacji ---
 def create_app():
-   app = Flask(__name__)
-   app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
-   database_url = os.getenv("DATABASE_URL")
-   if not database_url:
-     raise RuntimeError("Brak DATABASE_URL")
+    app = Flask(__name__)
+    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "domyslny-klucz")
 
-    # Zamiana prefixu jeśli trzeba
-   if database_url.startswith("postgres://"):
-        database_url = database_url.replace("postgres://", "postgresql://", 1)
+database_url = os.getenv("DATABASE_URL")
+if not database_url:
+     raise RuntimeError("Brak DATABASE_URL (ustaw w Render → Environment).")
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
 
-   app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-   app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-   db.init_app(app)
+db.init_app(app)
 
-    # Tworzenie tabel (bez danych testowych – awaryjnie)
-   with app.app_context():
-        db.create_all()
-        print(">>> Tabele zostały utworzone (lub już istniały)")
+    # Utworzenie tabel przy starcie
+with app.app_context():
+    db.create_all()
+    print(">>> Tabele zostały utworzone (lub już istniały)")
 
-    # --- PRZYKŁADOWY ROUTE, żeby aplikacja miała cokolwiek na / ---
-   @app.route("/")
-   def index():
-        return render_template("index.html")
+    # --- ROUTES ---
+    @app.route("/")
+    def index():
+        # jeśli masz templates/index.html – super; jeśli nie, zmień na return "OK"
+      return render_template("index.html")
    
-   @app.route("/projects")
-   def projects_view():
-       items = Project.query.order_by(Project.created_at.desc()).all()
-       return render_template("projects.html", projects=items)
+@app.route("/projects")
+def projects_view():
+        items = Project.query.order_by(Project.created_at.desc()).all()
+        return render_template("projects.html", projects=items)
 
-   @app.route("/skills")
-   def skills_view():
-       items = Skill.query.order_by(Skill.name.asc()).all()
-       return render_template("skills.html", skills=items)
+@app.route("/skills")
+def skills_view():
+        items = Skill.query.order_by(Skill.name.asc()).all()
+        return render_template("skills.html", skills=items)
+        return app
 
-   
-    
-
-# URUCHOMIENIE aplikacji (Render tego potrzebuje)
+# Wymagane przez Gunicorn/Render: app:app
 app = create_app()
+
 
 
 
