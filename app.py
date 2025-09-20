@@ -213,7 +213,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = database_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-   def create_app():
+def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
