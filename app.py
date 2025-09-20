@@ -198,18 +198,14 @@ def init_db():
 # AUTO-CREATE TABLES (Render workaround)
 # ------------------------
 # 
-import os
-
 def create_app():
     app = Flask(__name__)
-    
-    # Wczytanie DATABASE_URL z Rendera
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
+
     database_url = os.getenv("DATABASE_URL")
-
     if not database_url:
-        raise RuntimeError("DATABASE_URL nie jest ustawiony!")
+        raise RuntimeError("Brak DATABASE_URL")
 
-    # Konwersja z postgres:// na postgresql:// (ważne!)
     if database_url.startswith("postgres://"):
         database_url = database_url.replace("postgres://", "postgresql://", 1)
 
@@ -218,12 +214,16 @@ def create_app():
 
     db.init_app(app)
 
-    # Tworzenie tabel (jeśli potrzeba)
+    # TU JEST MAGIA — UTWORZENIE TABEL
     with app.app_context():
         db.create_all()
-        print(">>> Tabele zostały utworzone lub już istniały")
+        print(">>> Tabele utworzone (lub już istniały)")
 
     return app
+
+
+
+
 
 
 
