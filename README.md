@@ -39,6 +39,17 @@ This app is live and hosted on Render.com <br>
 Live demo here => https://dbassignment20-09-25.onrender.com <br>
 
 
+DEPLOYMENT STEPS: <br>
+Create an account on Render.com<br>
+Create a Web Service from this GitHub repo<br>
+Add a postgrSQL Database (in Render also) <br>
+Set environment variables: <br>
+   DATABASE_URL => use internal Render DB URL <br>
+   SECRET_KEY => any string <br>
+Set Start Command in Render <br>
+
+
+
 
 Create a virtual environment: <br>
 python3 -m venv venv <br>
