@@ -1,29 +1,48 @@
-# import the necessary modules from Flask
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-# create an instance of the Flask application
-app = Flask(__name__)
+# DODAJEMY MODELE – to kluczowe!
+from models.project_model import Project
+from models.skill_model import Skill
 
-# Configuration for PostgreSQL
-# app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
+# Inicjalizacja bazy (SQLAlchemy)
+db = SQLAlchemy()
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tyju@localhost:5432/portfolio_db'
-import os
+# Funkcja tworząca aplikację
+def create_app():
+   app = Flask(__name__)
+   app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'domyslny-klucz')
+   database_url = os.getenv("DATABASE_URL")
+   if not database_url:
+     raise RuntimeError("Brak DATABASE_URL")
 
-database_url = os.getenv("DATABASE_URL")
-if database_url.startswith("postgres://"):
-    database_url = database_url.replace("postgres://", "postgresql://", 1)
+    # Zamiana prefixu jeśli trzeba
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(app)
 
-# Initialize SQLAlchemy
-db = SQLAlchemy(app)
+    # Tworzenie tabel (bez danych testowych – awaryjnie)
+    with app.app_context():
+        db.create_all()
+        print(">>> Tabele zostały utworzone (lub już istniały)")
+
+    # --- PRZYKŁADOWY ROUTE, żeby aplikacja miała cokolwiek na / ---
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    return app
+
+# URUCHOMIENIE aplikacji (Render tego potrzebuje)
+app = create_app()
+
+
 
 # ------------------------
 # MODELS
@@ -153,6 +172,7 @@ def delete_project(id):
 def init_db():
     """Initialize database with sample data"""
     db.create_all()
+    print(">>> Tabele zostaly utworzone")
     
     if Project.query.first() is None:
         projects_data = [
