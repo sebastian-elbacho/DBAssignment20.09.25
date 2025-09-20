@@ -38,9 +38,7 @@ This app is live and hosted on Render.com <br>
 
 Live demo here => https://dbassignment20-09-25.onrender.com <br>
 
-Variable <br>       |Example Value<br>
-DATABASE_URL <br>   |postgresql://user:pass@host/dbname<br>
-SECRET_KEY <br>     |super-secret-key<br>
+
 
 
 
