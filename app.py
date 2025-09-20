@@ -182,16 +182,6 @@ def init_db():
         print("Database initialized with sample data!")
 
 
-# ------------------------
-# AUTO-CREATE TABLES (Render free plan workaround)
-# ------------------------
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
-
-
 
 # ------------------------
 # RUN APP
