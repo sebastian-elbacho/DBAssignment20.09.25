@@ -184,6 +184,25 @@ def init_db():
 
 
 # ------------------------
+# AUTO-CREATE TABLES (Render workaround)
+# ------------------------
+import os
+
+@app.before_first_request
+def create_tables():
+    print(">>> Checking database URL:", os.getenv("DATABASE_URL"))
+    try:
+        db.create_all()
+        print(">>> Tables created successfully!")
+    except Exception as e:
+        print(">>> Error creating tables:", e)
+
+
+
+
+
+
+# ------------------------
 # RUN APP
 # ------------------------
 if __name__ == '__main__':
