@@ -19,25 +19,24 @@ def create_app():
      raise RuntimeError("Brak DATABASE_URL")
 
     # Zamiana prefixu jeśli trzeba
-    if database_url.startswith("postgres://"):
+   if database_url.startswith("postgres://"):
         database_url = database_url.replace("postgres://", "postgresql://", 1)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+   app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+   app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    db.init_app(app)
+   db.init_app(app)
 
     # Tworzenie tabel (bez danych testowych – awaryjnie)
-    with app.app_context():
+   with app.app_context():
         db.create_all()
         print(">>> Tabele zostały utworzone (lub już istniały)")
 
     # --- PRZYKŁADOWY ROUTE, żeby aplikacja miała cokolwiek na / ---
-    @app.route("/")
-    def index():
+   @app.route("/")
+   def index():
         return render_template("index.html")
-
-    return app
+        return app
 
 # URUCHOMIENIE aplikacji (Render tego potrzebuje)
 app = create_app()
